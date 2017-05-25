@@ -1,5 +1,7 @@
 from abc import ABCMeta, abstractmethod
-import time
+import pyglet
+import Products
+
 __author__ = 'DD'
 
 class MusikdatenbankFabrik(metaclass=ABCMeta):
@@ -8,15 +10,20 @@ class MusikdatenbankFabrik(metaclass=ABCMeta):
 
     def __init__(self):
         self.geladen = False
+        self.queue = []
 
-    @abstractmethod
+
     def lade_musik(self):
         pass
 
-    def abspielen(self):
+    def play(self):
         if not self.geladen:
-            self.lade_musik()
-        for song in self.playlist:
-            song.abspielen()
-            time.sleep(1)
-        print('Wir sind am Ende der Playliste angelangt. Auf Wiedersehen!')
+            self.load()
+        for lied in self.queue:
+            lied.play()
+
+        pyglet.app.run()
+        print('ENDE!')
+
+    def exit_callback(self):
+        pyglet.app.exit()

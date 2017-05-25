@@ -11,5 +11,5 @@ class Musikstueck(metaclass=ABCMeta):
         self.album = album
 
     @abstractmethod
-    def abspielen(self):
+    def play(self):
         pass

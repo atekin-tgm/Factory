@@ -1,9 +1,9 @@
-from factory_musikdatenbank.MusikdatenbankMockupFabrik import *
-from factory_musikdatenbank.MusikdatenbankFileFabrik import *
+from Factories import *
 
 __author__ = 'DD'
 
+#Die Main Klasse um den Musikplayer zu starten!
 if __name__ == '__main__':
-    fabrik = MusikdatenbankFileFabrik()
-    #fabrik = MusikdatenbankMockupFabrik()
-    fabrik.abspielen()
+    fabrik = FileFactory()
+    #fabrik = MockupFactory()
+    fabrik.play()
